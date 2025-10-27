@@ -16,7 +16,7 @@
         label="Saved Articles"
         routerLink="/saved-articles"
         variant="outlined"
-        badge="3"
+        [badge]="`${totalSavedArticles()}`"
         [badgeSeverity]="'primary'"
       >
       </p-button>

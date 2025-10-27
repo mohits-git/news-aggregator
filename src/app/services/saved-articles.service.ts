@@ -8,9 +8,12 @@ import { BehaviorSubject } from 'rxjs';
 export class SavedArticlesService {
   private storageKey = 'savedArticles';
 
-  savedArticles: BehaviorSubject<NewsArticle[]> = new BehaviorSubject(
+  private savedArticles: BehaviorSubject<NewsArticle[]> = new BehaviorSubject(
     this.getSavedArticles(),
   );
+
+  // observable to watch for changes in saved articles
+  savedArticles$ = this.savedArticles.asObservable();
 
   getSavedArticles(): NewsArticle[] {
     const saved = localStorage.getItem(this.storageKey);
