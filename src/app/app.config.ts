@@ -10,6 +10,7 @@ import { routes } from './app.routes';
 import { customPreset } from './shared/theme/custom-preset';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { newsAPIInterceptor } from './interceptors/news-api.interceptor';
+import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,5 +32,6 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
+    MessageService,
   ],
 };

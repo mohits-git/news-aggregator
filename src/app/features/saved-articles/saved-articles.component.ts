@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-saved-articles',
   imports: [],
   templateUrl: './saved-articles.component.html',
-  styleUrl: './saved-articles.component.scss'
+  styleUrl: './saved-articles.component.scss',
 })
-export class SavedArticlesComponent {
-
-}
+export class SavedArticlesComponent {}

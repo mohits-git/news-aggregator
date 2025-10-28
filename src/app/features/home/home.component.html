@@ -1,1 +1,23 @@
-<p>home works!</p>
+<div class="flex-col">
+  <div class="flex">
+    <!-- Search box -->
+    <!-- Category Selector -->
+  </div>
+
+  @if (loading()) {
+  <div class="flex justify-center w-full">
+    <!-- Loading Spinner - if loading state -->
+  </div>
+  }
+  @else {
+  <div class="grid">
+    @for (article of articles(); track article.url) {
+      <app-news-article-card [article]="article" />
+    }
+  </div>
+  }
+
+  <div class="flex justify-center mt-4">
+    <!-- Pagination Controls -->
+  </div>
+</div>
