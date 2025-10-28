@@ -8,7 +8,7 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
-import { CardComponent } from '../card/card.component';
+import { CardComponent } from '@/shared/components/card/card.component';
 import { SavedArticlesService } from '@/services/saved-articles.service';
 import { ButtonModule } from 'primeng/button';
 import { DatePipe } from '@angular/common';

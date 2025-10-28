@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { NewsService } from '@/services/news.service';
-import { NewsArticleCardComponent } from '@/shared/components/news-article-card/news-article-card.component';
 import {
   NEWS_API_DEFAULTS,
   NEWS_API_MESSAGES,
@@ -27,6 +26,7 @@ import {
 import { SearchBoxComponent } from '@/shared/components/search-box/search-box.component';
 import { CategorySelectorComponent } from '@/shared/components/category-selector/category-selector.component';
 import { PaginationComponent } from '@/shared/components/pagination/pagination.component';
+import { NewsArticleCardComponent } from './components/news-article-card/news-article-card.component';
 
 @Component({
   selector: 'app-home',
