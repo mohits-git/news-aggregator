@@ -36,6 +36,11 @@ export class SavedArticlesService {
     localStorage.setItem(this.storageKey, JSON.stringify(savedArticles));
   }
 
+  clearAll(): void {
+    this.savedArticles.next([]);
+    localStorage.removeItem(this.storageKey);
+  }
+
   isArticleSaved(articleUrl: string): boolean {
     const savedArticles = this.savedArticles.getValue();
     return savedArticles.some((a) => a.url === articleUrl);

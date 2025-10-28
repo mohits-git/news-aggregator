@@ -1,0 +1,25 @@
+<div appCard class="saved-article-card">
+  <div class="image-container">
+    <img [src]="article().urlToImage ?? '/default-image.png'" [alt]="article().title">
+  </div>
+  <div>
+    <div class="header">
+      <span class="source">
+        {{ article().source.name }}
+      </span>
+      <p-button size="small" icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary" (click)="removeArticle()"></p-button>
+    </div>
+    <p class='title'>
+      {{ article().title }}
+    </p>
+    <div class="footer">
+      <span class="date">
+        {{ article().publishedAt | date:'short' }}
+      </span>
+      <a [href]="article().url" target="_blank" rel="noopener noreferrer" class="read-more">
+        Read more
+        <i class="pi pi-external-link link-icon"></i>
+      </a>
+    </div>
+  </div>
+</div>
