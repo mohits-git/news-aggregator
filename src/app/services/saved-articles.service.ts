@@ -1,3 +1,4 @@
+import { SAVED_ARTICLES_STORAGE_KEY } from '@/shared/constants';
 import { NewsArticle } from '@/shared/types';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -6,36 +7,37 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class SavedArticlesService {
-  private storageKey = 'savedArticles';
+  private storageKey = SAVED_ARTICLES_STORAGE_KEY;
 
-  private savedArticles: BehaviorSubject<NewsArticle[]> = new BehaviorSubject(
-    this.getSavedArticles(),
-  );
-
-  // observable to watch for changes in saved articles
-  savedArticles$ = this.savedArticles.asObservable();
-
-  getSavedArticles(): NewsArticle[] {
+  private getSavedArticlesFromLocalStorage(): NewsArticle[] {
     const saved = localStorage.getItem(this.storageKey);
-    return saved ? JSON.parse(saved) : [];
+    const savedArticles = saved ? JSON.parse(saved) : [];
+    return savedArticles;
   }
 
+  private savedArticles: BehaviorSubject<NewsArticle[]> = new BehaviorSubject(
+    this.getSavedArticlesFromLocalStorage(),
+  );
+  savedArticles$ = this.savedArticles.asObservable();
+
   saveArticle(article: NewsArticle): void {
-    const savedArticles: NewsArticle[] = this.getSavedArticles();
+    const savedArticles: NewsArticle[] = this.savedArticles.getValue();
     if (!savedArticles.find((a) => a.url === article.url)) {
       savedArticles.push(article);
+      this.savedArticles.next([...savedArticles]);
       localStorage.setItem(this.storageKey, JSON.stringify(savedArticles));
     }
   }
 
   removeArticle(article: NewsArticle): void {
-    let savedArticles: NewsArticle[] = this.getSavedArticles();
+    let savedArticles: NewsArticle[] = this.savedArticles.getValue();
     savedArticles = savedArticles.filter((a) => a.url !== article.url);
+    this.savedArticles.next([...savedArticles]);
     localStorage.setItem(this.storageKey, JSON.stringify(savedArticles));
   }
 
   isArticleSaved(articleUrl: string): boolean {
-    const savedArticles = this.getSavedArticles();
+    const savedArticles = this.savedArticles.getValue();
     return savedArticles.some((a) => a.url === articleUrl);
   }
 }
