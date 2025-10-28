@@ -1,0 +1,20 @@
+<p-autoComplete
+  #categoryDropdown
+  inputId="category"
+  [(ngModel)]="category"
+  [inputMode]="onSelect"
+  [suggestions]="categoryOptions"
+  (completeMethod)="filterCategories($event.query)"
+  [dropdown]="true"
+  [forceSelection]="true"
+  optionLabel="label"
+  optionValue="value"
+  appendTo="body"
+  fluid
+  (onDropdownClick)="filterCategories('')"
+  (onDropdownClick)="categoryDropdown.show()"
+  (onSelect)="onSelect()"
+>
+  <ng-template #loadingicon>
+  </ng-template>
+</p-autoComplete>
