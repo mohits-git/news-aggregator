@@ -1,23 +1,24 @@
-<div class="flex-col">
-  <div class="flex">
-    <!-- Search box -->
-    <!-- Category Selector -->
+<div class="news-container">
+  <div class="filter-row">
+    <app-search-box />
+    <app-category-selector />
   </div>
-
   @if (loading()) {
-  <div class="flex justify-center w-full">
-    <!-- Loading Spinner - if loading state -->
+  <div class="loading-spinner">
+    <i class="pi pi-spin pi-spinner"></i>
   </div>
   }
   @else {
-  <div class="grid">
+  <div class="articles-list">
     @for (article of articles(); track article.url) {
       <app-news-article-card [article]="article" />
     }
   </div>
   }
 
-  <div class="flex justify-center mt-4">
-    <!-- Pagination Controls -->
+  <div class="pagination-container">
+    <app-pagination
+      [totalRecords]="totalArticles()"
+    />
   </div>
 </div>

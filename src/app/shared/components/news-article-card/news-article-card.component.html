@@ -1,7 +1,7 @@
 @if(article(); as article) {
 <div appCard class="card">
   <div class="image-container">
-    <img [src]="article.urlToImage" [alt]="article.title">
+    <img [src]="article.urlToImage ?? '/default-image.png'" [alt]="article.title">
   </div>
   <div class="main-content">
     <div class="header">
@@ -19,11 +19,11 @@
       {{ article.title }}
     </h2>
     <p class="content">
-      {{ article.content }}
+      {{ article.content ?? article.description }}
     </p>
     <div class="footer">
       <span class="date">
-        {{ article.publishedAt | date:'medium' }}
+        {{ article.publishedAt | date:'short' }}
       </span>
       <a [href]="article.url" target="_blank" rel="noopener noreferrer" class="read-more">
         Read more <i class="pi pi-external-link link-icon"></i>

@@ -24,10 +24,18 @@ import {
   NewsArticle,
   NewsCategory,
 } from '@/shared/types';
+import { SearchBoxComponent } from '@/shared/components/search-box/search-box.component';
+import { CategorySelectorComponent } from '@/shared/components/category-selector/category-selector.component';
+import { PaginationComponent } from '@/shared/components/pagination/pagination.component';
 
 @Component({
   selector: 'app-home',
-  imports: [NewsArticleCardComponent],
+  imports: [
+    NewsArticleCardComponent,
+    SearchBoxComponent,
+    CategorySelectorComponent,
+    PaginationComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -74,7 +82,6 @@ export class HomeComponent implements OnInit {
       .getTopHeadlines(category, query, page, pageSize)
       .subscribe({
         next: (response: NewsApiResponse) => {
-          console.log(response);
           this.articles.set(response.articles);
           this.totalArticles.set(response.totalResults);
           this.loading.set(false);
