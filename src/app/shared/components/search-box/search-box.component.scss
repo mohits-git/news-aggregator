@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+}
+::ng-deep .p-input {
+  width: 100%;
+}
+
+div {
+  width: 100%;
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    top: 30%;
+    right: 16px;
+    color: #888;
+    cursor: text;
+  }
+}
