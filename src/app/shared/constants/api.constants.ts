@@ -29,7 +29,7 @@ export const NEWS_API_DEFAULTS = {
   COUNTRY: 'in',
   CATEGORY: 'general' as NewsCategory,
   PAGE: 1,
-  PAGE_SIZE: 10,
+  PAGE_SIZE: 6,
 } as const;
 
 export const NEWS_API_CATEGORIES = {
