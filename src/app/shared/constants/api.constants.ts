@@ -20,11 +20,16 @@ export const NEWS_API_QUERY_PARAMS = {
   CATEGORY: 'category',
   Q: 'q',
   SOURCES: 'sources',
+  PAGE: 'page',
+  PAGE_SIZE: 'pageSize',
 } as const;
 
 export const NEWS_API_DEFAULTS = {
+  Q: '',
   COUNTRY: 'in',
-  CATEGORY: 'general',
+  CATEGORY: 'general' as NewsCategory,
+  PAGE: 1,
+  PAGE_SIZE: 10,
 } as const;
 
 export const NEWS_API_CATEGORIES = {
@@ -38,3 +43,7 @@ export const NEWS_API_CATEGORIES = {
 } as const;
 
 export const NEWS_API_CATEGORY_LIST = Object.values(NEWS_API_CATEGORIES) as NewsCategory[];
+
+export const NEWS_API_MESSAGES = {
+  FETCH_ERROR: 'Failed to fetch news articles. Please try again later.',
+} as const;

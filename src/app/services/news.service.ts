@@ -11,7 +11,7 @@ import { NewsApiResponse, NewsCategory } from '@/shared/types';
 export class NewsService {
   httpClient: HttpClient = inject(HttpClient);
 
-  getNews(
+  getTopHeadlines(
     category: NewsCategory,
     query: string,
     page: number,
