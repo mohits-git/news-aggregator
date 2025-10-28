@@ -10,5 +10,4 @@ import { ToastModule } from 'primeng/toast';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'news-aggregator';
 }

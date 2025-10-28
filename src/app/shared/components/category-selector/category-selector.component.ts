@@ -3,7 +3,7 @@ import { DropdownOption, NewsCategory } from '@/shared/types';
 import { Component, inject, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AutoComplete, AutoCompleteSelectEvent } from 'primeng/autocomplete';
+import { AutoComplete } from 'primeng/autocomplete';
 
 @Component({
   selector: 'app-category-selector',

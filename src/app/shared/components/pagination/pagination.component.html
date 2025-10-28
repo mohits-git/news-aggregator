@@ -1,4 +1,3 @@
-<p-paginator (onPageChange)="onPageChange($event)" [totalRecords]="totalRecords()" [rowsPerPageOptions]="[6, 12, 18]" rows="6"
-  [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
-  [pageLinkSize]="3" [first]="(page() - 1) * pageSize()"
-/>
+<p-paginator (onPageChange)="onPageChange($event)" [totalRecords]="totalRecords()" [rowsPerPageOptions]="[6, 12, 18]"
+  rows="6" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+  [pageLinkSize]="3" [first]="(page() - 1) * pageSize()" />

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { buildNewsAPIPath } from '@/shared/utils/api.utils';
 import { NEWS_API_ENDPOINTS } from '@/shared/constants';
 import { NewsApiResponse, NewsCategory } from '@/shared/types';

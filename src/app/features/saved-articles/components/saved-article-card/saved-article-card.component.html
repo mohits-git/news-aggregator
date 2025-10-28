@@ -17,8 +17,7 @@
         {{ article().publishedAt | date:'short' }}
       </span>
       <a [href]="article().url" target="_blank" rel="noopener noreferrer" class="read-more">
-        Read more
-        <i class="pi pi-external-link link-icon"></i>
+        {{ appLabels.READ_MORE }} <i class="pi pi-external-link link-icon"></i>
       </a>
     </div>
   </div>

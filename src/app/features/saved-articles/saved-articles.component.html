@@ -1,13 +1,13 @@
 <div class="saved-articles-container">
   <p-button size="small" variant="text" class="back-button" (click)="goBack()">
     <i class="pi pi-arrow-left"></i>
-    Back
+    {{ appLabels.BACK }}
   </p-button>
   <div class="header">
-    <h2>Saved Articles</h2>
+    <h2>{{ appLabels.SAVED_ARTICLES }}</h2>
     <p-button variant="outlined" styleClass="clear-button" (click)="clearAll()" >
       <i class="pi pi-trash"></i>
-      Clear All
+      {{ appLabels.CLEAR_ALL }}
     </p-button>
   </div>
 

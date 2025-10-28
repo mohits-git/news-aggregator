@@ -1,4 +1,4 @@
-import { DropdownOption } from "../types/dropdown-options.types";
+import { DropdownOption } from '../types';
 
 export const CATEGORY_OPTIONS: DropdownOption[] = [
   { label: 'Business', value: 'business' },

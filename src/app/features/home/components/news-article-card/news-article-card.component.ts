@@ -12,6 +12,7 @@ import { CardComponent } from '@/shared/components/card/card.component';
 import { SavedArticlesService } from '@/services/saved-articles.service';
 import { ButtonModule } from 'primeng/button';
 import { DatePipe } from '@angular/common';
+import { APP_LABELS } from '@/shared/constants';
 
 @Component({
   selector: 'app-news-article-card',
@@ -20,6 +21,8 @@ import { DatePipe } from '@angular/common';
   styleUrl: './news-article-card.component.scss',
 })
 export class NewsArticleCardComponent implements OnInit {
+  appLabels = APP_LABELS;
+
   article: InputSignal<NewsArticle> = input.required<NewsArticle>();
   private savedArticleService = inject(SavedArticlesService);
 

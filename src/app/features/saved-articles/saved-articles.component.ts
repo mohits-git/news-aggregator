@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { SavedArticleCardComponent } from './components/saved-article-card/saved-article-card.component';
+import { APP_LABELS } from '@/shared/constants';
 
 @Component({
   selector: 'app-saved-articles',
@@ -18,6 +19,8 @@ import { SavedArticleCardComponent } from './components/saved-article-card/saved
   styleUrl: './saved-articles.component.scss',
 })
 export class SavedArticlesComponent implements OnInit {
+  appLabels = APP_LABELS;
+
   private savedArticlesService = inject(SavedArticlesService);
   private router = inject(Router);
 
