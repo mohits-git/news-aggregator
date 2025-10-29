@@ -25,9 +25,7 @@
       <span class="date">
         {{ article.publishedAt | date:'short' }}
       </span>
-      <a [href]="article.url" target="_blank" rel="noopener noreferrer" class="read-more">
-          {{ appLabels.READ_MORE }} <i class="pi pi-external-link link-icon"></i>
-      </a>
+      <app-read-more-button [articleUrl]="article.url"></app-read-more-button>
     </div>
   </div>
 </div>

@@ -12,19 +12,17 @@ import { CardComponent } from '@/shared/components/card/card.component';
 import { SavedArticlesService } from '@/services/saved-articles.service';
 import { ButtonModule } from 'primeng/button';
 import { DatePipe } from '@angular/common';
-import { APP_LABELS } from '@/shared/constants';
 import { NewsArticle } from '@/shared/types';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ReadMoreButtonComponent } from '@/shared/components/read-more-button/read-more-button.component';
 
 @Component({
   selector: 'app-news-article-card',
-  imports: [CardComponent, ButtonModule, DatePipe],
+  imports: [CardComponent, ButtonModule, DatePipe, ReadMoreButtonComponent],
   templateUrl: './news-article-card.component.html',
   styleUrl: './news-article-card.component.scss',
 })
 export class NewsArticleCardComponent implements OnInit {
-  appLabels = APP_LABELS;
-
   article: InputSignal<NewsArticle> = input.required<NewsArticle>();
   private savedArticleService = inject(SavedArticlesService);
   private destroyRef = inject(DestroyRef);

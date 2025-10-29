@@ -1,0 +1,32 @@
+@use 'variables' as vars;
+
+.read-more {
+  font-size: 0.875rem;
+  color: vars.$primary-color;
+  text-decoration: none;
+  cursor: pointer;
+  padding-inline: 8px;
+  padding-block: 4px;
+  background-color: white;
+  border: 1px solid vars.$primary-color;
+  border-radius: 4px;
+  flex-shrink: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .link-icon {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .read-more {
+    font-size: 0.75rem;
+
+    .link-icon {
+      font-size: 0.75rem;
+    }
+  }
+}
