@@ -1,4 +1,8 @@
-import { CATEGORY_OPTIONS, NEWS_API_CATEGORIES } from '@/shared/constants';
+import {
+  CATEGORY_OPTIONS,
+  NEWS_API_CATEGORIES,
+  NEWS_API_QUERY_PARAMS,
+} from '@/shared/constants';
 import { DropdownOption, NewsCategory } from '@/shared/types';
 import { Component, inject, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +20,9 @@ export class CategorySelectorComponent {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   categoryOptions: DropdownOption[] = CATEGORY_OPTIONS;
-  category: NewsCategory = NEWS_API_CATEGORIES.GENERAL;
+  category: NewsCategory =
+    this.route.snapshot.queryParams[NEWS_API_QUERY_PARAMS.CATEGORY] ??
+    NEWS_API_CATEGORIES.GENERAL;
 
   filterCategories(query: string): void {
     query = query.toLowerCase().trim();

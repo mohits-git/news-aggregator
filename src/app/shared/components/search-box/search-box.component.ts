@@ -1,3 +1,4 @@
+import { NEWS_API_QUERY_PARAMS } from '@/shared/constants';
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +21,9 @@ export class SearchBoxComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private destroyRef = inject(DestroyRef);
-  query = new BehaviorSubject<string>('');
+  query = new BehaviorSubject<string>(
+    this.route.snapshot.queryParams[NEWS_API_QUERY_PARAMS.Q] ?? '',
+  );
 
   onQueryChange(value: string) {
     this.query.next(value);

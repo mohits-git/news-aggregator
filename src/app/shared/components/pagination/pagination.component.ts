@@ -24,9 +24,13 @@ export class PaginationComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   totalRecords: InputSignal<number> = input.required<number>();
 
-  page: WritableSignal<number> = signal<number>(1);
+  page: WritableSignal<number> = signal<number>(
+    this.route.snapshot.queryParams[NEWS_API_QUERY_PARAMS.PAGE] ??
+      NEWS_API_DEFAULTS.PAGE,
+  );
   pageSize: WritableSignal<number> = signal<number>(
-    NEWS_API_DEFAULTS.PAGE_SIZE,
+    this.route.snapshot.queryParams[NEWS_API_QUERY_PARAMS.PAGE_SIZE] ??
+      NEWS_API_DEFAULTS.PAGE_SIZE,
   );
 
   onPageChange(event: PaginatorState): void {

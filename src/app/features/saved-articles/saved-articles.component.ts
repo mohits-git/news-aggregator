@@ -37,7 +37,6 @@ export class SavedArticlesComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/']);
-    // window.history.back();
+    window.history.back();
   }
 }

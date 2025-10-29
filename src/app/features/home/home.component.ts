@@ -7,7 +7,7 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { NewsService } from '@/services/news.service';
@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     const queryParamsSubscription: Subscription =
-      this.activatedRoute.queryParams.subscribe((params) => {
+      this.activatedRoute.queryParams.subscribe((params: Params) => {
         const query: string =
           params[NEWS_API_QUERY_PARAMS.Q] ?? NEWS_API_DEFAULTS.Q;
         const category: NewsCategory =
