@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { buildNewsAPIPath } from '@/shared/utils/api.utils';
 import { NEWS_API_ENDPOINTS } from '@/shared/constants';
-import { NewsApiResponse, NewsCategory } from '@/shared/types';
+import { NewsApiQueryOptions, NewsApiResponse } from '@/shared/types';
 
 @Injectable({
   providedIn: 'root',
@@ -11,23 +11,17 @@ import { NewsApiResponse, NewsCategory } from '@/shared/types';
 export class NewsService {
   httpClient: HttpClient = inject(HttpClient);
 
-  getTopHeadlines(
-    category: NewsCategory,
-    query: string,
-    page: number,
-    pageSize: number,
-  ): Observable<any> {
-    return this.httpClient
-      .get<NewsApiResponse>(
-        buildNewsAPIPath(NEWS_API_ENDPOINTS.TOP_HEADLINES),
-        {
-          params: {
-            category,
-            q: query,
-            page: page.toString(),
-            pageSize: pageSize.toString(),
-          },
+  getTopHeadlines(options: NewsApiQueryOptions): Observable<any> {
+    return this.httpClient.get<NewsApiResponse>(
+      buildNewsAPIPath(NEWS_API_ENDPOINTS.TOP_HEADLINES),
+      {
+        params: {
+          category: options.category,
+          q: options.query,
+          page: options.page.toString(),
+          pageSize: options.pageSize.toString(),
         },
-      );
+      },
+    );
   }
 }

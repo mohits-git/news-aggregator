@@ -19,6 +19,7 @@ import {
 } from '@/shared/constants';
 import {
   NewsApiErrorResponse,
+  NewsApiQueryOptions,
   NewsApiResponse,
   NewsArticle,
   NewsCategory,
@@ -63,7 +64,7 @@ export class HomeComponent implements OnInit {
           params[NEWS_API_QUERY_PARAMS.PAGE_SIZE] ??
             NEWS_API_DEFAULTS.PAGE_SIZE,
         );
-        this.fetchTopHeadlines(category, query, page, pageSize);
+        this.fetchTopHeadlines({ category, query, page, pageSize });
       });
 
     this.destroyRef.onDestroy(() => {
@@ -71,29 +72,22 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  private fetchTopHeadlines(
-    category: NewsCategory,
-    query: string,
-    page: number,
-    pageSize: number,
-  ): void {
+  private fetchTopHeadlines(options: NewsApiQueryOptions): void {
     this.loading.set(true);
-    this.newsService
-      .getTopHeadlines(category, query, page, pageSize)
-      .subscribe({
-        next: (response: NewsApiResponse) => {
-          this.articles.set(response.articles);
-          this.totalArticles.set(response.totalResults);
-          this.loading.set(false);
-        },
-        error: (error: HttpErrorResponse) => {
-          const errResponse = error.error as NewsApiErrorResponse;
-          this.messageService.add({
-            severity: SEVERITY.ERROR,
-            summary: NEWS_API_MESSAGES.FETCH_ERROR,
-            detail: errResponse.message,
-          });
-        },
-      });
+    this.newsService.getTopHeadlines(options).subscribe({
+      next: (response: NewsApiResponse) => {
+        this.articles.set(response.articles);
+        this.totalArticles.set(response.totalResults);
+        this.loading.set(false);
+      },
+      error: (error: HttpErrorResponse) => {
+        const errResponse = error.error as NewsApiErrorResponse;
+        this.messageService.add({
+          severity: SEVERITY.ERROR,
+          summary: NEWS_API_MESSAGES.FETCH_ERROR,
+          detail: errResponse.message,
+        });
+      },
+    });
   }
 }

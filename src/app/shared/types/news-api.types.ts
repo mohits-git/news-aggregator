@@ -22,3 +22,10 @@ export interface NewsApiErrorResponse {
   code: string;
   message: string;
 }
+
+export interface NewsApiQueryOptions {
+    category: NewsCategory;
+    query: string;
+    page: number;
+    pageSize: number;
+}
