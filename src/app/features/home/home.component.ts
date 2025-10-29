@@ -27,7 +27,7 @@ import {
 import { SearchBoxComponent } from '@/shared/components/search-box/search-box.component';
 import { CategorySelectorComponent } from '@/shared/components/category-selector/category-selector.component';
 import { PaginationComponent } from '@/shared/components/pagination/pagination.component';
-import { NewsArticleCardComponent } from './components/news-article-card/news-article-card.component';
+import { NewsArticleCardComponent } from './news-article-card/news-article-card.component';
 
 @Component({
   selector: 'app-home',

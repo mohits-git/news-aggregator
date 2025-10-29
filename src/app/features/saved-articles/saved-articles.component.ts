@@ -9,7 +9,7 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { SavedArticleCardComponent } from './components/saved-article-card/saved-article-card.component';
+import { SavedArticleCardComponent } from './saved-article-card/saved-article-card.component';
 import { APP_LABELS } from '@/shared/constants';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
