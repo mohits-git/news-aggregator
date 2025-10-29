@@ -11,20 +11,26 @@ export class SavedArticlesService {
 
   private getSavedArticlesFromLocalStorage(): NewsArticle[] {
     const saved = localStorage.getItem(this.storageKey);
-    const savedArticles = saved ? JSON.parse(saved) : [];
-    return savedArticles;
+    if (!saved) {
+      return [];
+    }
+    try {
+      return JSON.parse(saved) as NewsArticle[];
+    } catch {
+      return [];
+    }
   }
 
   private savedArticles: BehaviorSubject<NewsArticle[]> = new BehaviorSubject(
     this.getSavedArticlesFromLocalStorage(),
   );
+
   savedArticles$ = this.savedArticles.asObservable();
 
   saveArticle(article: NewsArticle): void {
     const savedArticles: NewsArticle[] = this.savedArticles.getValue();
     if (!savedArticles.find((a) => a.url === article.url)) {
-      savedArticles.push(article);
-      this.savedArticles.next([...savedArticles]);
+      this.savedArticles.next([...savedArticles, article]);
       localStorage.setItem(this.storageKey, JSON.stringify(savedArticles));
     }
   }

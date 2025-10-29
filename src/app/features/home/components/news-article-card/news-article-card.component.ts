@@ -1,6 +1,6 @@
-import { NewsArticle } from '@/shared/types';
 import {
   Component,
+  DestroyRef,
   inject,
   input,
   InputSignal,
@@ -13,6 +13,8 @@ import { SavedArticlesService } from '@/services/saved-articles.service';
 import { ButtonModule } from 'primeng/button';
 import { DatePipe } from '@angular/common';
 import { APP_LABELS } from '@/shared/constants';
+import { NewsArticle } from '@/shared/types';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-news-article-card',
@@ -25,6 +27,7 @@ export class NewsArticleCardComponent implements OnInit {
 
   article: InputSignal<NewsArticle> = input.required<NewsArticle>();
   private savedArticleService = inject(SavedArticlesService);
+  private destroyRef = inject(DestroyRef);
 
   isSaved: WritableSignal<boolean> = signal<boolean>(false);
 
@@ -32,11 +35,13 @@ export class NewsArticleCardComponent implements OnInit {
     this.isSaved.set(
       this.savedArticleService.isArticleSaved(this.article().url),
     );
-    this.savedArticleService.savedArticles$.subscribe(() => {
-      this.isSaved.set(
-        this.savedArticleService.isArticleSaved(this.article().url),
-      );
-    });
+    this.savedArticleService.savedArticles$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.isSaved.set(
+          this.savedArticleService.isArticleSaved(this.article().url),
+        );
+      });
   }
 
   onSaveChange(save: boolean) {

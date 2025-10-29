@@ -11,7 +11,7 @@ import { NewsApiQueryOptions, NewsApiResponse } from '@/shared/types';
 export class NewsService {
   httpClient: HttpClient = inject(HttpClient);
 
-  getTopHeadlines(options: NewsApiQueryOptions): Observable<any> {
+  getTopHeadlines(options: NewsApiQueryOptions): Observable<NewsApiResponse> {
     return this.httpClient.get<NewsApiResponse>(
       buildNewsAPIPath(NEWS_API_ENDPOINTS.TOP_HEADLINES),
       {
