@@ -1,3 +1,5 @@
+@use 'variables' as vars;
+
 .card {
   width: 100%;
   max-height: 100%;
@@ -27,7 +29,7 @@
 
       .source {
         font-size: 0.875rem;
-        color: #888;
+        color: vars.$secondary-color;
         text-decoration: none;
         cursor: pointer;
       }
@@ -39,22 +41,22 @@
         margin: 0;
         border-radius: 50%;
         background-color: white;
-        border-color: #ccc;
+        border-color: vars.$border-color;
         cursor: pointer;
-        color: #888;
+        color: vars.$secondary-color;
 
         &:hover {
-          border-color: #007BFF;
-          color: #007BFF;
+          border-color: vars.$primary-color;
+          color: vars.$primary-color;
         }
       }
 
       ::ng-deep.p-button.saved {
-        border-color: #007BFF;
-        color: #007BFF;
+        border-color: vars.$primary-color;
+        color: vars.$primary-color;
 
         &:hover {
-          border-color: #ccc;
+          border-color: vars.$border-color;
         }
       }
     }
@@ -72,7 +74,7 @@
 
     .content {
       font-size: 0.825rem;
-      color: #555;
+      color: vars.$secondary-text;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -89,18 +91,18 @@
 
       .date {
         font-size: 0.875rem;
-        color: #888;
+        color: vars.$secondary-color;
       }
 
       .read-more {
         font-size: 0.875rem;
-        color: #007BFF;
+        color: vars.$primary-color;
         text-decoration: none;
         cursor: pointer;
         padding-inline: 8px;
         padding-block: 4px;
-        background-color: #fff;
-        border: 1px solid #007BFF;
+        background-color: white;
+        border: 1px solid vars.$primary-color;
         border-radius: 4px;
         flex-shrink: 0;
 
