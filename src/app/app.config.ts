@@ -15,13 +15,7 @@ import { MessageService } from 'primeng/api';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(
-      routes,
-      withComponentInputBinding(),
-      withRouterConfig({
-        paramsInheritanceStrategy: 'always',
-      }),
-    ),
+    provideRouter(routes),
     provideHttpClient(withInterceptors([newsAPIInterceptor])),
     provideAnimationsAsync(),
     providePrimeNG({
